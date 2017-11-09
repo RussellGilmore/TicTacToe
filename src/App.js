@@ -11,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">React TicTacToe</h1>
         </header>
         <p className="App-intro">
-          TicTacToe at it finest!
+          TicTacToe at its finest!
         </p>
       </div>
     );

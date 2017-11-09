@@ -35,6 +35,26 @@ const VictoryModal = () => (
         </div>
       </div>
     </div>);
+// const modalInstance = (
+//   <div className="static-modal">
+//     <Modal.Dialog>
+//       <Modal.Header>
+//         <Modal.Title>Modal title</Modal.Title>
+//       </Modal.Header>
+//
+//       <Modal.Body>
+//         One fine body...
+//       </Modal.Body>
+//
+//       <Modal.Footer>
+//         <Button>Close</Button>
+//         <Button bsStyle="primary">Save changes</Button>
+//       </Modal.Footer>
+//
+//     </Modal.Dialog>
+//   </div>
+// );
+
 
 const TicTacToeRow = ({row, rowIndex, placePiece}) => {
   return (
@@ -69,39 +89,35 @@ class TicTacToe extends Component {
   }
 
   gameState() {
-    var playerValue = 1;
-    // if(playerValue === 1){
-    //   playerValue = 'X';
-    // }else{
-    //   playerValue = 'O';
-    // }
-    //console.log(this.state.board[0][0]);
-    //console.log(playerValue);
-    if (this.state.board[0][0] === playerValue && this.state.board[0][1] === playerValue && this.state.board[0][2] === playerValue) {
-      console.log('e1');
-      this.renderModal();
-    } else if (this.state.board[1][0] === playerValue && this.state.board[1][1] === playerValue && this.state.board[1][2] === playerValue) {
-      console.log('e2');
-      this.renderModal();
-    } else if (this.state.board[2][0] === playerValue && this.state.board[2][1] === playerValue && this.state.board[2][2] === playerValue) {
-      console.log('e3');
-      this.renderModal(); // Rows End
-    } else if (this.state.board[0][0] === playerValue && this.state.board[1][0] === playerValue && this.state.board[2][0] === playerValue) {
-      console.log('e4');
-      this.renderModal();
-    } else if (this.state.board[0][1] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][1] === playerValue) {
-      console.log('e5');
-      this.renderModal();
-    } else if (this.state.board[0][2] === playerValue && this.state.board[1][2] === playerValue && this.state.board[2][2] === playerValue) {
-      console.log('e6');
-      this.renderModal(); // Columns End
-    } else if (this.state.board[0][0] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][2] === playerValue) {
-      console.log('e7');
-      this.renderModal();
-    } else if (this.state.board[0][2] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][0] === playerValue) {
-      console.log('e8');
-      this.renderModal();
+
+    for(var playerValue = 1; playerValue <=2;playerValue++){
+      if (this.state.board[0][0] === playerValue && this.state.board[0][1] === playerValue && this.state.board[0][2] === playerValue) {
+        console.log('e1');
+        this.renderModal();
+      } else if (this.state.board[1][0] === playerValue && this.state.board[1][1] === playerValue && this.state.board[1][2] === playerValue) {
+        console.log('e2');
+        this.renderModal();
+      } else if (this.state.board[2][0] === playerValue && this.state.board[2][1] === playerValue && this.state.board[2][2] === playerValue) {
+        console.log('e3');
+        this.renderModal(); // Rows End
+      } else if (this.state.board[0][0] === playerValue && this.state.board[1][0] === playerValue && this.state.board[2][0] === playerValue) {
+        console.log('e4');
+        this.renderModal();
+      } else if (this.state.board[0][1] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][1] === playerValue) {
+        console.log('e5');
+        this.renderModal();
+      } else if (this.state.board[0][2] === playerValue && this.state.board[1][2] === playerValue && this.state.board[2][2] === playerValue) {
+        console.log('e6');
+        this.renderModal(); // Columns End
+      } else if (this.state.board[0][0] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][2] === playerValue) {
+        console.log('e7');
+        this.renderModal();
+      } else if (this.state.board[0][2] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][0] === playerValue) {
+        console.log('e8');
+        this.renderModal();
+      }
     }
+
 
   }
 
@@ -130,6 +146,7 @@ class TicTacToe extends Component {
   renderModal() {
     window.$(ReactDOM.findDOMNode(this).querySelector('.modal')).modal();
   }
+
 
   render() {
     return (
