@@ -6,12 +6,12 @@ const cloneTable = table => table.map(row => row.slice());
 
 const translatePieces = (piece) => {
   switch (piece) {
-    case 0:
-      return '';
-    case 1:
-      return 'X';
     case 2:
       return 'O';
+    case 1:
+      return 'X';
+    default:
+      return '';
   }
 };
 
