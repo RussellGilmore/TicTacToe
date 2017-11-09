@@ -1,0 +1,11 @@
+.TicTacToe {
+  width: 300px;
+}
+
+.TicTacToe-item {
+  display: flex;
+  justify-content:center;
+  align-content:center;
+  border-style: solid;
+  height: 100px;
+}
