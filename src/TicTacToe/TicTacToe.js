@@ -55,7 +55,8 @@ class TicTacToe extends Component {
     super();
     this.state = {
       board: EMPTY_BOARD,
-      turn: 0
+      turn: 0,
+      victoryPlayer: null
     };
 
     this.placePiece = this.placePiece.bind(this);
@@ -64,6 +65,8 @@ class TicTacToe extends Component {
     this.renderModal = this.renderModal.bind(this);
     this.renderButton = this.renderButton.bind(this);
     this.clearBoard = this.clearBoard.bind(this);
+    this.victoryCheck = this.victoryCheck.bind(this);
+    this.victoryReturn = this.victoryReturn.bind(this);
   }
 
   componentDidMount() {
@@ -73,37 +76,21 @@ class TicTacToe extends Component {
   gameState() {
     for(var playerValue = 1; playerValue <=2;playerValue++){
       if (this.state.board[0][0] === playerValue && this.state.board[0][1] === playerValue && this.state.board[0][2] === playerValue) {
-        console.log('e1');
-        this.clearBoard();
-        this.renderModal();
+        this.victoryCheck(playerValue);
       } else if (this.state.board[1][0] === playerValue && this.state.board[1][1] === playerValue && this.state.board[1][2] === playerValue) {
-        console.log('e2');
-        this.clearBoard();
-        this.renderModal();
+        this.victoryCheck(playerValue);
       } else if (this.state.board[2][0] === playerValue && this.state.board[2][1] === playerValue && this.state.board[2][2] === playerValue) {
-        console.log('e3');
-        this.clearBoard();
-        this.renderModal(); // Rows End
+        this.victoryCheck(playerValue);
       } else if (this.state.board[0][0] === playerValue && this.state.board[1][0] === playerValue && this.state.board[2][0] === playerValue) {
-        console.log('e4');
-        this.clearBoard();
-        this.renderModal();
+        this.victoryCheck(playerValue);
       } else if (this.state.board[0][1] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][1] === playerValue) {
-        console.log('e5');
-        this.clearBoard();
-        this.renderModal();
+        this.victoryCheck(playerValue);
       } else if (this.state.board[0][2] === playerValue && this.state.board[1][2] === playerValue && this.state.board[2][2] === playerValue) {
-        console.log('e6');
-        this.clearBoard();
-        this.renderModal(); // Columns End
+        this.victoryCheck(playerValue);
       } else if (this.state.board[0][0] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][2] === playerValue) {
-        console.log('e7');
-        this.clearBoard();
-        this.renderModal();
+        this.victoryCheck(playerValue);
       } else if (this.state.board[0][2] === playerValue && this.state.board[1][1] === playerValue && this.state.board[2][0] === playerValue) {
-        console.log('e8');
-        this.clearBoard();
-        this.renderModal();
+        this.victoryCheck(playerValue);
       }
     }
   }
@@ -155,6 +142,20 @@ class TicTacToe extends Component {
     });
   }
 
+  victoryCheck(playerValue){
+    this.setState({victoryPlayer: playerValue});
+  }
+
+  victoryReturn(){
+    if(this.state.victoryPlayer !== null){
+      var gameEnd = this.state.victoryPlayer;
+      this.state.victoryPlayer = null;
+      return (
+        <p>Player {gameEnd} has won!</p>
+      );
+    }
+  }
+
 
   render() {
     return (
@@ -166,6 +167,9 @@ class TicTacToe extends Component {
           <button className="btn btn-primary" onClick={this.clearBoard}>
             Clear Board
           </button>
+        </div>
+        <div className="victory-return">
+            {this.victoryReturn()}
         </div>
       </div>
 
