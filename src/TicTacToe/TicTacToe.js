@@ -15,27 +15,6 @@ const translatePieces = (piece) => {
   }
 };
 
-
-// const VictoryModal = () => (
-//     <div id="potato" className="modal fade">
-//       <div className="modal-dialog" role="document">
-//         <div className="modal-content">
-//           <div className="modal-header">
-//             <h5 className="modal-title">Victory!</h5>
-//             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-//               <span aria-hidden="true">&times;</span>
-//             </button>
-//           </div>
-//           <div className="modal-body">
-//             <p>Modal body text goes here.</p>
-//           </div>
-//           <div className="modal-footer">
-//             <button type="button" className="btn btn-primary">New Game?</button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>);
-
 const TicTacToeRow = ({row, rowIndex, placePiece}) => {
   return (
     <div className="row" key={rowIndex}>
@@ -113,12 +92,6 @@ class TicTacToe extends Component {
     });
   }
 
-  // renderNewGameButton(){
-  //   <button onClick={clearBoard}>
-  //     Clear Board
-  //   </button>
-  // }
-
   renderRow(row, i) {
     return (<TicTacToeRow key={i} row={row} rowIndex={i} placePiece={this.placePiece}/>);
   }
@@ -149,7 +122,6 @@ class TicTacToe extends Component {
   victoryReturn(){
     if(this.state.victoryPlayer !== null){
       var gameEnd = this.state.victoryPlayer;
-      this.state.victoryPlayer = null;
       this.setState({
         victoryPlayer: null
       }
@@ -159,7 +131,6 @@ class TicTacToe extends Component {
       );
     }
   }
-
 
   render() {
     return (
