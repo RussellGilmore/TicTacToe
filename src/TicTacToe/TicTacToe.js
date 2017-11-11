@@ -150,6 +150,10 @@ class TicTacToe extends Component {
     if(this.state.victoryPlayer !== null){
       var gameEnd = this.state.victoryPlayer;
       this.state.victoryPlayer = null;
+      this.setState({
+        victoryPlayer: null
+      }
+    );
       return (
         <p>Player {gameEnd} has won!</p>
       );
