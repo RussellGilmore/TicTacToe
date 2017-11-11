@@ -9,3 +9,13 @@
   border-style: solid;
   height: 100px;
 }
+
+.clear-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button{
+  margin-top: 10px;
+}
