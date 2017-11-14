@@ -35,7 +35,8 @@ class TicTacToe extends Component {
     this.state = {
       board: EMPTY_BOARD,
       turn: 0,
-      victoryPlayer: null
+      victoryPlayer: null,
+      victoryP : null
     };
 
     this.placePiece = this.placePiece.bind(this);
@@ -75,6 +76,9 @@ class TicTacToe extends Component {
   }
 
   placePiece(i, j) {
+    if(this.state.victoryPlayer !== null) {
+      return;
+    }
     const placement = this.state.turn + 1;
     const newBoard = cloneTable(this.state.board);
 
@@ -111,7 +115,8 @@ class TicTacToe extends Component {
       board: EMPTY_BOARD,
       turn: (this.state.turn === 0
         ? 1
-        : 0)
+        : 0),
+      victoryPlayer : null
     });
   }
 
@@ -121,15 +126,21 @@ class TicTacToe extends Component {
 
   victoryReturn(){
     if(this.state.victoryPlayer !== null){
-      var gameEnd = this.state.victoryPlayer;
+      this.victoryMessage();
       this.setState({
-        victoryPlayer: null
+        victoryPlayer: null,
+        victoryP : <p>Player {this.state.turn} has won!</p>
       }
     );
-      return (
-        <p>Player {gameEnd} has won!</p>
-      );
     }
+  }
+
+  displayVictor() {
+    if(this.state.victoryPlayer === null) {
+      return false;
+    }
+
+    return (<p>Player {this.state.victoryPlayer} has won!</p>);
   }
 
   render() {
@@ -144,7 +155,7 @@ class TicTacToe extends Component {
           </button>
         </div>
         <div className="victory-return">
-            {this.victoryReturn()}
+            {this.displayVictor()}
         </div>
       </div>
 
